@@ -8,7 +8,7 @@ import underthesea
 
 class Translation():
     def __init__(self, from_lang='vi', to_lang='en', mode='google'):
-        # The class Translation is a wrapper for the two translation libraries, googletrans and translate. 
+        # The class Translation is a wrapper for the two translation libraries, googletrans and translate.
         self.__mode = mode
         self.__from_lang = from_lang
         self.__to_lang = to_lang
@@ -16,7 +16,8 @@ class Translation():
         if mode in 'googletrans':
             self.translator = googletrans.Translator()
         elif mode in 'translate':
-            self.translator = translate.Translator(from_lang=from_lang,to_lang=to_lang)
+            self.translator = translate.Translator(
+                from_lang=from_lang, to_lang=to_lang)
 
     def preprocessing(self, text):
 
@@ -26,17 +27,20 @@ class Translation():
 
         text = self.preprocessing(text)
         return self.translator.translate(text) if self.__mode in 'translate' \
-                else self.translator.translate(text, dest=self.__to_lang).text
+            else self.translator.translate(text, dest=self.__to_lang).text
+
 
 class Text_Preprocessing():
     def __init__(self, stopwords_path='./dict/vietnamese-stopwords-dash.txt'):
         with open(stopwords_path, 'rb') as f:
             lines = f.readlines()
-        self.stop_words = [line.decode('utf8').replace('\n','') for line in lines]
+        self.stop_words = [line.decode('utf8').replace(
+            '\n', '') for line in lines]
 
     def find_substring(self, string1, string2):
 
-        match = SequenceMatcher(None, string1, string2, autojunk=False).find_longest_match(0, len(string1), 0, len(string2))
+        match = SequenceMatcher(None, string1, string2, autojunk=False).find_longest_match(
+            0, len(string1), 0, len(string2))
         return string1[match.a:match.a + match.size].strip()
 
     def remove_stopwords(self, text):
@@ -45,16 +49,16 @@ class Text_Preprocessing():
         return " ".join([w for w in text.split() if w not in self.stop_words])
 
     def lowercasing(self, text):
-        return text.lower() 
+        return text.lower()
 
     def uppercasing(self, text):
         return text.upper()
 
-    def add_accents(self, text): 
+    def add_accents(self, text):
 
         return ViUtils.add_accents(u"{}".format(text))
 
-    def remove_accents(self, text): 
+    def remove_accents(self, text):
 
         return ViUtils.remove_accents(u"{}".format(text))
 
@@ -64,7 +68,7 @@ class Text_Preprocessing():
 
     def text_norm(self, text):
 
-        return underthesea.text_normalize(text)  
+        return underthesea.text_normalize(text)
 
     def text_classify(self, text):
 

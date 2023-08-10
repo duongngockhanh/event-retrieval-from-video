@@ -1,19 +1,8 @@
-# import json
+a = [1, 2, 3, 4]
+b = [5, 6, 7, 8]
 
-# with open('image_path.json') as json_file:
-#     DictImagePath = json.load(json_file)
+c = dict(zip(a, b))
 
-# # print(type(DictImagePath))
-# id2img_fps = {}
-# for key, value in DictImagePath.items():
-#    id2img_fps[int(key)] = value 
-
-# print(id2img_fps)
-# with open('image_path_1.json', 'a+') as f:
-#   f.write(json.dumps(id2img_fps))
-
-import glob
-
-lis = glob.glob("images/*.jpg")
-
-print(len(lis))
+print(c)
+         
+print(len(c))
