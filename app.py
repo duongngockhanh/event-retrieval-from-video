@@ -44,8 +44,7 @@ def thumbnailimg():
     imgperindex = 100
 
     # imgpath = request.args.get('imgpath') + "/"
-    pagefile = []
-
+    
     page_filelist = []
     list_idx = []
 
@@ -68,6 +67,7 @@ def thumbnailimg():
             list_idx.append(tmp_index)
             tmp_index += 1
 
+    pagefile = []
     for imgpath, id in zip(page_filelist, list_idx):
         pagefile.append({'imgpath': imgpath, 'id': id})
 
