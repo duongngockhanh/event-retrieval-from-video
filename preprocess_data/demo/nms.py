@@ -33,7 +33,7 @@ if __name__ == "__main__":
     box_list = []
     keys = list(data.keys()) # 'detection_class_names', 'detection_class_labels', 'detection_scores', 'detection_boxes', 'detection_class_entities'
     number_boxes = len(data[keys[0]])
-    threshold_nms = 0.15
+    threshold_nms = 0.05
 
     shape_image = (720, 1280)
     
@@ -45,14 +45,14 @@ if __name__ == "__main__":
     
     final_boxes = []
     while len(box_list) > 0:
-        a = box_list.pop(0)
-        final_boxes.append(a)
+        current_box  = box_list.pop(0)
+        final_boxes.append(current_box )
         i = 0
         while i < len(box_list):
-            if bb_intersection_over_union(box_list[i][2], a[2]) > threshold_nms:
-                b = box_list.pop(i)
-                i -= 1
-            i += 1
+            if bb_intersection_over_union(box_list[i][2], current_box[2]) > threshold_nms:
+                box_list.pop(i)
+            else:
+                i += 1
     
     img = cv2.imread(img_path)
     
@@ -61,3 +61,6 @@ if __name__ == "__main__":
         img = cv2.putText(img, i[3], i[2][0: 2], cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 1, cv2.LINE_AA)
     
     cv2.imwrite("after_nms.jpg", img)
+    cv2.imshow("nms", img)
+    cv2.waitKey(0)
+    cv2.destroyAllWindows()

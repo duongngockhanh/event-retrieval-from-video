@@ -27,7 +27,9 @@ for i in range(len(classes)):
     thickness = 2
     
     cv2.rectangle(image, (x_min, y_min), (x_max, y_max), color, thickness)
+    image = cv2.putText(image, classes[i], (x_min, y_min), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 1, cv2.LINE_AA)
 
 cv2.imwrite("before_nms.jpg", image)
-# cv2.waitKey(0)
-# cv2.destroyAllWindows()
+cv2.imshow("demo.py", image)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
