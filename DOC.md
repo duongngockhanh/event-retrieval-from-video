@@ -23,13 +23,4 @@
 2. TransNet V2: Shot Boundary Detection Neural Network ([GitHub](https://github.com/soCzech/TransNetV2/tree/master))
 
 ## Place Recognition
-1. 
-2. 
-
-## OCR
-1. 
-2. 
-
-## Color Detection
-1. 
-2. 
+1. CosPlace: Rethinking Visual Geo-localization for Large-Scale Applications ([GitHub](https://github.com/gmberton/cosplace))
