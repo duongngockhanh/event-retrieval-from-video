@@ -1,9 +1,13 @@
 # Documents for Ho Chi Minh AI Challenge
+- Faiss
 - CLIP and Prompt Engineering for CLIP
 - TransNet
 - Place Recognition
 - OCR
 - Color Detection
+
+## Faiss
+1. Faiss: Facebook AI Research Search Similarity ([Docs](https://faiss.ai/index.html))
 
 ## CLIP and Prompt Engineering for CLIP
 
