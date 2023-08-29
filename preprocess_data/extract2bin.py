@@ -2,7 +2,7 @@ import numpy as np
 import faiss
 import glob
 
-file_paths = glob.glob("clip-features-vit-b32/*.npy")
+file_paths = sorted(glob.glob("clip-features-vit-b32/L01_V*.npy"))
 
 # Load your .npy files and concatenate vectors
 vectors = []

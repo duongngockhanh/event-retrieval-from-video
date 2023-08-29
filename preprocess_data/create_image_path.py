@@ -5,23 +5,21 @@ second_folder_path_list = glob.glob('keyframes/*')
 
 second_folder_path_list.sort()
 
-b = []
+all_path_list = []
 
 for i in second_folder_path_list:
-    c = glob.glob(i + "/*")
-    c.sort()
-    b += c
+    third_path = glob.glob(i + "/*")
+    third_path.sort()
+    all_path_list += third_path
 
-for j in b[200:250]:
-    print(j)
+idx = list(range(len(all_path_list)))
+
+index_path_dict = dict(zip(idx, all_path_list))
 
 
-# sample_dict ={ 
-#   "key1": 1, 
-#   "key2": 2, 
-#   "key3": 3
-# }
+json_file_path = "index_path.json"
 
-# json_obj = json.dumps(sample_dict, indent = 3) 
-# print(json_obj)
+# Mở tệp JSON để ghi dữ liệu
+with open(json_file_path, "w") as json_file:
+    json.dump(index_path_dict, json_file)
 

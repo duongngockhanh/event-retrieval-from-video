@@ -18,7 +18,10 @@ os.environ['CUDA_VISIBLE_DEVICES'] = '-1'
 app = Flask(__name__, template_folder='templates')
 
 ####### CONFIG #########
-with open('image_path.json') as json_file:
+json_path = 'index_path.json'
+bin_file = 'index_normal.bin'
+
+with open(json_path) as json_file:
     json_dict = json.load(json_file)
 
 DictImagePath = {}
@@ -26,7 +29,6 @@ for key, value in json_dict.items():
     DictImagePath[int(key)] = value
 
 LenDictPath = len(DictImagePath)
-bin_file = 'data/index_normal.bin'
 MyFaiss = Myfaiss(bin_file, DictImagePath, 'cpu', Translation(), "ViT-B/32")
 ########################
 
