@@ -26,7 +26,7 @@ for key, value in json_dict.items():
     DictImagePath[int(key)] = value
 
 LenDictPath = len(DictImagePath)
-bin_file = 'faiss_normal_ViT.bin'
+bin_file = 'data/index_normal.bin'
 MyFaiss = Myfaiss(bin_file, DictImagePath, 'cpu', Translation(), "ViT-B/32")
 ########################
 
