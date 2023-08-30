@@ -1,4 +1,4 @@
-<h1><center>Pipeline HCM AI CHALLENGE 2023 <br> Event Retrieval from Visual Data</center></h1>
+<h1>Pipeline HCM AI CHALLENGE 2023 <br> Event Retrieval from Visual Data</h1>
 
 ## Setup 
 ```
@@ -16,6 +16,6 @@ URL: http://0.0.0.0:5001/home?index=0
 
 # Dependencies
 
-Bin file for Faiss is [here](https://drive.google.com/file/d/1s_i7Y3-ditJxrwQ9A86FCA79R6JRvoSv/view?usp=sharing) (put it in ./)
+Everything you need is [here](https://drive.google.com/drive/folders/1-M6xo-sE8zAljGwfw3ktkjH4G9uwHj39?usp=sharing).
 
-Keyframes is [here](https://s3-north1.viettelidc.com.vn/aic23-b2/Keyframes_L01.zip) (put it in ./)
+There are 4 files last updated at 1:15 pm, August 30.
