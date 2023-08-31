@@ -130,8 +130,9 @@ def get_img():
     img = cv2.resize(img, (1280, 720))
 
     # print(img.shape)
+    img = cv2.rectangle(img, [0, 0], [830, 110], color=(255, 255, 255), thickness=-1)
     img = cv2.putText(img, image_name, (30, 80), cv2.FONT_HERSHEY_SIMPLEX,
-                      3, (255, 0, 0), 4, cv2.LINE_AA)
+                      2.5, (255, 0, 0), 4, cv2.LINE_AA)
 
     ret, jpeg = cv2.imencode('.jpg', img)
     return Response((b'--frame\r\n'
