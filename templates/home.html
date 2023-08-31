@@ -227,10 +227,11 @@
                 width: 516px; */
     }
 
+    /* Change the image size */
     .container_img_btn {
       position: relative;
       width: 100%;
-      max-width: 318px;
+      max-width: 218px;
       display: grid;
       grid-template-columns: auto auto auto auto;
       padding: 1%;
@@ -407,7 +408,7 @@
         $("#div_img").append(
           `<div class= "container_img_btn"  onmouseover="mouseOver(${index})" onmouseout="mouseOut(${index})">
                         <button class="btn_knn" onClick="go_img_search(${item.id})">IR</button>
-                        <img class="hoverImg" onclick="show_list_segment(${item.id})" src="get_img?fpath=${item.imgpath}">
+                        <img class="hoverImg" onclick="show_list_segment(${item.id})" src="get_img?fpath=${item.imgpath}"">
                     </div>`
         )
       });
