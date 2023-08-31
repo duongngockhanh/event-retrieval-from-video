@@ -77,7 +77,8 @@
       width: 100%;
       height: 100%;
       background-color: #e0e5ec;
-      ;
+      display: grid;
+      grid-template-columns: 1fr 3fr;
     }
 
     /* search */
@@ -314,33 +315,38 @@
       }
     }
   </style>
+  
   <div class="container">
-    <div class="search_container">
-      <div class="search">
-        <label for="">
-          <i class="fa fa-search" aria-hidden="true"></i>
-        </label>
-        <input id="text_query" type="text" placeholder="Text query">
+    <div class="extra_view">
+      <p>AIVIETNAM</p>
+    </div>
+    <div class="clip_view">
+      <div class="search_container">
+        <div class="search">
+          <label for="">
+            <i class="fa fa-search" aria-hidden="true"></i>
+          </label>
+          <input id="text_query" type="text" placeholder="Text query">
+        </div>
+        <div class="group_btn">
+          <button class="custom-btn btn-13" onclick="search();"><span>Search</span></button>
+        </div>
+
       </div>
-      <div class="group_btn">
-        <button class="custom-btn btn-13" onclick="search();"><span>Search</span></button>
+
+
+      <!-- <div style="height: 5px; width: 100%; background-color: black; margin-bottom: 5px; margin-top: 5px;"></div> -->
+      <div id="div_img">
+
       </div>
 
+      <div style="height: 5px; width: 100%; background-color: black;"></div>
+      <div id="div_page">
+
+      </div>
+      <div id="div_total_page">Total: 1200 page</div>
+      <div style="margin-bottom: 50px;"></div>
     </div>
-
-
-    <!-- <div style="height: 5px; width: 100%; background-color: black; margin-bottom: 5px; margin-top: 5px;"></div> -->
-    <div id="div_img">
-
-    </div>
-
-    <div style="height: 5px; width: 100%; background-color: black;"></div>
-    <div id="div_page">
-
-    </div>
-    <div id="div_total_page">Total: 1200 page</div>
-    <div style="margin-bottom: 50px;"></div>
-
   </div>
   <script>
     var data = '{{ data|tojson }}';
