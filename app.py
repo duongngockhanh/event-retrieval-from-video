@@ -101,9 +101,11 @@ def text_search():
 
     pagefile = []
     text_query = request.args.get('textquery')
-    _, list_ids, _, list_image_paths = MyFaiss.text_search(text_query, k=50)
+    _, list_ids, _, list_image_paths = MyFaiss.text_search(text_query, k=200)
 
     imgperindex = 100
+
+    print("len(list_ids)----------------", len(list_ids))
 
     for imgpath, id in zip(list_image_paths, list_ids):
         pagefile.append({'imgpath': imgpath, 'id': int(id)})
