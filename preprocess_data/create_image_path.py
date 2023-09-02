@@ -17,7 +17,7 @@ idx = list(range(len(all_path_list)))
 index_path_dict = dict(zip(idx, all_path_list))
 
 
-json_file_path = "index_path.json"
+json_file_path = "index_path_02.json"
 
 # Mở tệp JSON để ghi dữ liệu
 with open(json_file_path, "w") as json_file:
