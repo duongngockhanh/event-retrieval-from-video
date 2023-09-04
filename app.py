@@ -142,5 +142,13 @@ def get_img():
                     mimetype='multipart/x-mixed-replace; boundary=frame')
 
 
+@app.route('/submitOD', methods=['POST'])
+def submit():
+    data = request.json
+    print("Received data from Frontend:")
+    print(data)
+    return "Data received by Backend"
+
+
 if __name__ == '__main__':
     app.run(debug=True, host="0.0.0.0", port=5001)
