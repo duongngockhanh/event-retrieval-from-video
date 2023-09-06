@@ -1,6 +1,8 @@
 # Thông tin của nhóm
 
-Các thông tin của nhóm được tổng hợp tại đây: [drive](https://drive.google.com/drive/folders/1p8rdQxpfZSNK-ZMtWNfUTB-2FWZw_gGK?usp=drive_link)
+1. Các thông tin của nhóm được tổng hợp tại đây: [drive](https://drive.google.com/drive/folders/1p8rdQxpfZSNK-ZMtWNfUTB-2FWZw_gGK?usp=drive_link)
+
+2. Data mà nhóm tải về được lưu ở đây: [drive](https://drive.google.com/drive/folders/1zY33bcTO86OwQRwXg4pdIn4XtsqIr_e2?fbclid=IwAR0jX-uWJbePOmd3sIlEGXWoIvTSeC5Q03nNLTVmzatEMfZ-GxqHR4L6YXQ)
 
 # Tổng hợp các link từ Ban tổ chức
 
