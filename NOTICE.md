@@ -6,7 +6,7 @@
 
 # Tổng hợp các link từ Ban tổ chức
 
-1. **Dữ liệu batch 1** (Dữ liệu làm quen bài toán): [docs](https://docs.google.com/spreadsheets/d/1nnfmpsIB2Cm0jatlN10WjwwZvEIvQxctf8_8YKQfXi4/edit#gid=0) 
+1. **Dữ liệu batch 1** (Dữ liệu làm quen bài toán): [docs](https://docs.google.com/spreadsheets/d/1nnfmpsIB2Cm0jatlN10WjwwZvEIvQxctf8_8YKQfXi4/edit#gid=0)
 
 2. **Dữ liệu batch 2** (Dữ liệu vòng sơ tuyển): [docs](https://docs.google.com/spreadsheets/d/1nnfmpsIB2Cm0jatlN10WjwwZvEIvQxctf8_8YKQfXi4/edit#gid=246172816)
 
