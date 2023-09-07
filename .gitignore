@@ -1,6 +1,6 @@
-keyframes
-index_normal_02.bin
 utils/__pycache__/*
-clip_features_L03
 L03_keyframes
 faiss_main_03.bin
+detection_L03
+clip_features_L03
+dataframe_L03.csv
