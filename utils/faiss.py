@@ -50,8 +50,7 @@ class Myfaiss:
 
         ###### TEXT FEATURES EXACTING ######
         text = clip.tokenize([text]).to(self.device)
-        text_features = self.model.encode_text(
-            text).cpu().detach().numpy().astype(np.float32)
+        text_features = self.model.encode_text(text).cpu().detach().numpy().astype(np.float32)
 
         ###### SEARCHING #####
         scores, idx_image = self.index.search(text_features, k=k)
