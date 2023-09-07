@@ -12,7 +12,8 @@
 
 3. **Dữ liệu batch 3** (Dữ liệu vòng chung kết): Cập nhật ngày 22-05
 
-4. Các truy vấn tham khảo từ AI Challenge **2022**: [website](http://aic-query.ledo.io.vn/aic22-final/)
+4. Các **truy vấn tham khảo** từ AI Challenge **2022**: [website](http://aic-query.ledo.io.vn/aic22-final/)
 
-5. Tổng hợp các buổi tập huấn: [youtube](https://www.youtube.com/playlist?list=PLFrCvCTyCurMvyhd-plLpViA_jLnaAmJv)
+5. Tổng hợp các buổi **tập huấn**: [youtube](https://www.youtube.com/playlist?list=PLFrCvCTyCurMvyhd-plLpViA_jLnaAmJv)
 
+6. Hướng dẫn cách nộp bài **vòng sơ tuyển**: [docs](https://docs.google.com/document/d/1FObOn5vBzJMEy-uJ6GCCGsu32xXv8fsVNyKZs27Xp6k/edit)
