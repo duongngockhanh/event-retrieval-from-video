@@ -110,8 +110,6 @@ def text_search():
     for imgpath, id in zip(list_image_paths, list_ids):
         pagefile.append({'imgpath': imgpath, 'id': int(id)})
 
-    np.save("abc.npy", pagefile)
-
     data = {'num_page': int(LenDictPath/imgperindex)+1, 'pagefile': pagefile}
 
     return render_template('home.html', data=data)
