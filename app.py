@@ -110,6 +110,8 @@ def text_search():
     for imgpath, id in zip(list_image_paths, list_ids):
         pagefile.append({'imgpath': imgpath, 'id': int(id)})
 
+    np.save("abc.npy", pagefile)
+
     data = {'num_page': int(LenDictPath/imgperindex)+1, 'pagefile': pagefile}
 
     return render_template('home.html', data=data)
@@ -132,7 +134,7 @@ def get_img():
     img = cv2.resize(img, (1280, 720))
 
     # print(img.shape)
-    img = cv2.rectangle(img, [0, 0], [830, 110], color=(255, 255, 255), thickness=-1)
+    img = cv2.rectangle(img, [0, 0], [1200, 110], color=(255, 255, 255), thickness=-1)
     img = cv2.putText(img, image_name, (30, 80), cv2.FONT_HERSHEY_SIMPLEX,
                       2.5, (255, 0, 0), 4, cv2.LINE_AA)
 
@@ -144,9 +146,9 @@ def get_img():
 
 @app.route('/submitOD', methods=['POST'])
 def submit():
-    data = request.json
+    detection_data = request.json
     print("Received data from Frontend:")
-    print(data)
+    print(detection_data)
     return "Data received by Backend"
 
 

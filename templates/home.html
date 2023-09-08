@@ -409,6 +409,7 @@
   </div>
   <script>
     var data = '{{ data|tojson }}';
+    // console.log(data)
     data = data.replace(/\s/g, '');
     data = data.replace(/\\/g, '/');
     data = JSON.parse(data);
@@ -511,7 +512,7 @@
 
 
 
-    // Object Detection Section 
+    // ---------------------------------- Object Detection Section ----------------------------------
     var fruits = [
       'person', 'bicycle', 'car', 'motorcycle', 'airplane', 'bus', 'train', 'truck', 'boat', 'traffic light', 
       'fire hydrant', 'stop sign', 'parking meter', 'bench', 'bird', 'cat', 'dog', 'horse', 'sheep', 'cow', 
