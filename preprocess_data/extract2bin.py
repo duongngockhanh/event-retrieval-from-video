@@ -2,7 +2,7 @@ import numpy as np
 import faiss
 import glob
 
-file_paths = sorted(glob.glob("clip_features_L03/L03_V*.npy"))
+file_paths = sorted(glob.glob("clip_features_L10/L10_V*.npy"))
 
 # Load your .npy files and concatenate vectors
 vectors = []
@@ -21,5 +21,5 @@ index = faiss.IndexFlatL2(d)  # L2 distance metric
 index.add(vectors)
 
 # Save the index and vectors to a binary file
-faiss.write_index(index, "faiss_main_03.bin")
+faiss.write_index(index, "faiss_main_10.bin")
 # np.savetxt("vectors_normal_02.bin", vectors)  # Save vectors as well

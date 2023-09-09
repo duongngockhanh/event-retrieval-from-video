@@ -18,8 +18,8 @@ os.environ['CUDA_VISIBLE_DEVICES'] = '-1'
 app = Flask(__name__, template_folder='templates')
 
 ####### CONFIG #########
-json_path = 'path_main_03.json'
-bin_file = 'faiss_main_03.bin'
+json_path = 'path_main_10.json'
+bin_file = 'faiss_main_10.bin'
 
 with open(json_path) as json_file:
     json_dict = json.load(json_file)
@@ -83,7 +83,7 @@ def image_search():
     print("image search")
     pagefile = []
     id_query = int(request.args.get('imgid'))
-    _, list_ids, _, list_image_paths = MyFaiss.image_search(id_query, k=50)
+    _, list_ids, _, list_image_paths = MyFaiss.image_search(id_query, k=200)
 
     imgperindex = 100
 
@@ -126,7 +126,7 @@ def get_img():
     if os.path.exists(fpath):
         img = cv2.imread(fpath)
     else:
-        print("load 404.jph")
+        print("load 404.jpg")
         img = cv2.imread("./static/images/404.jpg")
 
     img = cv2.resize(img, (1280, 720))

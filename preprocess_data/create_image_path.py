@@ -1,7 +1,7 @@
 import json
 import glob
 
-second_folder_path_list = glob.glob('L03_keyframes/*')
+second_folder_path_list = glob.glob('compressed_L10/*')
 
 second_folder_path_list.sort()
 
@@ -17,7 +17,7 @@ idx = list(range(len(all_path_list)))
 index_path_dict = dict(zip(idx, all_path_list))
 
 
-json_file_path = "path_main_03.json"
+json_file_path = "path_main_10.json"
 
 # Mở tệp JSON để ghi dữ liệu
 with open(json_file_path, "w") as json_file:
