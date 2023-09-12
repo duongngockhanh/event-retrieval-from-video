@@ -13,16 +13,6 @@ for second_path in second_path_list:
     third_path_list = sorted(glob.glob(f"{second_path}/*"))
     for third_path in third_path_list:
         vectors.append(np.load(third_path).reshape(-1, 512))
-
-
-# file_paths = sorted(glob.glob("clip_features_L10/L10_V*.npy"))
-
-# # Load your .npy files and concatenate vectors
-
-# for file_path in file_paths:  # Replace with your actual file paths
-#     vectors.append(np.load(file_path).reshape(-1, 512))
-
-
 vectors = np.concatenate(vectors, axis=0).astype(np.float32)
 
 # Normalize vectors (optional, but can improve search quality)
