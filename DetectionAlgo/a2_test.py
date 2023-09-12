@@ -6,8 +6,8 @@ from functools import reduce
 clip_filter_path = "abc.npy"
 clip_filter = list(np.load(clip_filter_path, allow_pickle=True))
 
-print(clip_filter[:2])
-print(type(clip_filter))
+# print(clip_filter[:2])
+# print(type(clip_filter))
 
 
 # 2. Đây là yêu cầu lọc của phần Object Detection, ảnh phải chứa ít nhất 3 object person
@@ -19,7 +19,7 @@ detection_query = {'person': 3}
 dataframe_path = "dataframe_L03.csv" # Ở DF này, 1 hàng sẽ bao gồm image_path (ở cột cuối), và số lượng phần tử của mỗi class
 pldf = pl.read_csv(dataframe_path) # pddf là Polars DataFrame đó anh
 temp_pl = pldf.filter(pldf["person"] >= 3).head() # Em thử lọc đơn giản, nhưng mình sẽ lọc phức tạp hơn
-print(temp_pl.shape)
+# print(temp_pl.shape)
 
 # clip_filter_pl = pl.DataFrame(clip_filter).rename({"imgpath": "image_path"})
 # print(clip_filter_pl.head())
@@ -80,9 +80,10 @@ def rerank(clip_filter, detection_query):
     not_filter_pl = filter_df(polar_df, not_conditions)
     filter_result = filter_pl.vstack(not_filter_pl)
     # filter_result = filter_result.sort(filter_result.columns)
-    print(filter_result.head())
+    # print(filter_result.head())
     filter_np = gen_np_from_df(filter_result)
     return filter_np
 
 new_clip_features = rerank(clip_filter, detection_query)
-print(new_clip_features[:5], len(new_clip_features))
+# print(new_clip_features[:5], len(new_clip_features))
+print(new_clip_features)
