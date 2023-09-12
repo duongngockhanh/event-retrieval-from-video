@@ -9,3 +9,8 @@ dataframe_L03.csv
 compressed_L10
 clip_features_L10
 faiss_main_10.bin
+
+compressed_Lxx
+clip_features_Lxx
+faiss_missing_20.bin
+path_missing_20.json

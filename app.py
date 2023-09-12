@@ -18,8 +18,8 @@ os.environ['CUDA_VISIBLE_DEVICES'] = '-1'
 app = Flask(__name__, template_folder='templates')
 
 ####### CONFIG #########
-json_path = 'path_main_10.json'
-bin_file = 'faiss_main_10.bin'
+json_path = 'path_missing_20.json'
+bin_file = 'faiss_missing_20.bin'
 
 with open(json_path) as json_file:
     json_dict = json.load(json_file)
