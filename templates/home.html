@@ -409,7 +409,7 @@
   </div>
   <script>
     var data = '{{ data|tojson }}';
-    // console.log(data)
+    console.log(data)
     data = data.replace(/\s/g, '');
     data = data.replace(/\\/g, '/');
     data = JSON.parse(data);
@@ -578,6 +578,9 @@
           selectedFruits[fruitName] = quantity;
         }
       }
+      
+      // Detection Query
+      data["detection_query"] = selectedFruits
 
       // Log object vào console cho kiểm tra
       fetch('/submitOD', {
@@ -585,7 +588,7 @@
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify(selectedFruits)
+        body: JSON.stringify(data)
       })
         .then(response => response.text())
         .then(data => {
