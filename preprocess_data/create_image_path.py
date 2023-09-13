@@ -2,7 +2,7 @@ import json
 import glob
 
 first_path = "compressed_Lxx"
-json_file_path = "path_missing_20.json"
+json_file_path = "full_path.json"
 
 all_path_list = []
 second_path_list = sorted(glob.glob(f"{first_path}/*"))

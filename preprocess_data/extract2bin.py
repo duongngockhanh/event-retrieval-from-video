@@ -5,7 +5,7 @@ import glob
 vectors = []
 
 first_path = "clip_features_Lxx"
-saved_file = "faiss_missing_20.bin"
+saved_file = "full_faiss.bin"
 
 second_path_list = sorted(glob.glob(f"{first_path}/*"))
 

@@ -1,10 +1,11 @@
 utils/__pycache__/*
 
-detection_Lxx
 compressed_Lxx
 clip_features_Lxx
-faiss_missing_20.bin
-path_missing_20.json
+detection_Lxx
+
+full_path.json
+full_faiss.bin
+dataframe_Lxx.csv
 
 submission
-dataframe_Lxx.csv
