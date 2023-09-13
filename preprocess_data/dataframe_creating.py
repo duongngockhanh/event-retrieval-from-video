@@ -29,7 +29,7 @@ for second_name in second_name_list:
         
         for forth_name in forth_name_list:
             temp_dict = {key: 0 for key in cols_name}
-            temp_dict["image_path"] = os.path.join(first_path_image, second_name, third_name, forth_name[:-4] + ".jpg")
+            temp_dict["image_path"] = os.path.join(first_path_image, "compressed" + second_name[-4:], third_name, forth_name[:-4] + ".webp")
             forth_path = os.path.join(third_path, forth_name)
             
             with open(forth_path) as f:

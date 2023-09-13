@@ -33,7 +33,8 @@ for key, value in json_dict.items():
 LenDictPath = len(DictImagePath)
 MyFaiss = Myfaiss(bin_file, DictImagePath, 'cpu', Translation(), "ViT-B/32")
 
-pldf = None
+dataframe_path = "dataframe_Lxx.csv"
+pldf = pl.read_csv(dataframe_path)
 ########################
 
 
@@ -149,9 +150,14 @@ def get_img():
 @app.route('/submitOD', methods=['POST'])
 def submit():
     detection_data = request.json
-    print("Received data from Frontend:")
-    print(detection_data)
-    return "Data received by Backend"
+    print("Detection Filter")
+    pagefile = rerank(clip_filter=detection_data['pagefile'], detection_query=detection_data['detection_query'])
+    print(detection_data['detection_query'])
+    data = dict()
+    data['num_page'] = detection_data['num_page']
+    data['pagefile'] = pagefile
+    return jsonify(data)
+
 
 def filter_df(df, conditions):
     if not conditions:
@@ -171,13 +177,16 @@ def filter_df(df, conditions):
 def and_operation(bool_list):
     return reduce((lambda x, y: x & y), bool_list)
 
+
 def not_and_operation(bool_list):
     return not reduce((lambda x, y:  not x & y), bool_list)
+
 
 def gen_np_from_df(polar_df):
     df = polar_df.select(['image_path', 'id'])
     filters = [{'imgpath': x[0], 'id': x[1]} for x in list(df.iter_rows())]
     return np.array(filters)
+
 
 def rerank(clip_filter, detection_query):
     # init 
@@ -194,7 +203,7 @@ def rerank(clip_filter, detection_query):
     filter_result = filter_pl.vstack(not_filter_pl)
     # filter_result = filter_result.sort(filter_result.columns)
     # print(filter_result.head())
-    filter_np = gen_np_from_df(filter_result)
+    filter_np = gen_np_from_df(filter_result).tolist()
     return filter_np
 
 if __name__ == '__main__':
