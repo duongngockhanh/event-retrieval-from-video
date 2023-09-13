@@ -195,15 +195,11 @@ def rerank(clip_filter, detection_query):
 
     # filter
     conditions = [polar_df[x] >= detection_query[x]  for x in detection_query.keys()]
-    not_conditions = [polar_df[x] < detection_query[x]  for x in detection_query.keys()]
     
     filter_pl = filter_df(polar_df, conditions)
     filter_pl = filter_pl.sort(filter_pl.columns)
-    not_filter_pl = filter_df(polar_df, not_conditions)
-    filter_result = filter_pl.vstack(not_filter_pl)
-    # filter_result = filter_result.sort(filter_result.columns)
-    # print(filter_result.head())
-    filter_np = gen_np_from_df(filter_result).tolist()
+
+    filter_np = gen_np_from_df(filter_pl).tolist()
     return filter_np
 
 if __name__ == '__main__':
