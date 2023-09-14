@@ -29,6 +29,7 @@ with open(json_path) as json_file:
 DictImagePath = {}
 for key, value in json_dict.items():
     DictImagePath[int(key)] = value
+MAX_ID = len(DictImagePath)
 
 LenDictPath = len(DictImagePath)
 MyFaiss = Myfaiss(bin_file, DictImagePath, 'cpu', Translation(), "ViT-B/32")
@@ -88,12 +89,31 @@ def image_search():
     print("image search")
     pagefile = []
     id_query = int(request.args.get('imgid'))
-    _, list_ids, _, list_image_paths = MyFaiss.image_search(id_query, k=200)
+    _, list_ids, _, list_image_paths = MyFaiss.image_search(id_query, k=1000)
 
     imgperindex = 100
 
     for imgpath, id in zip(list_image_paths, list_ids):
         pagefile.append({'imgpath': imgpath, 'id': int(id)})
+
+    data = {'num_page': int(LenDictPath/imgperindex)+1, 'pagefile': pagefile}
+
+    return render_template('home.html', data=data)
+
+
+@app.route('/showsegment')
+def showsegment():
+    print("show segment")
+    pagefile = []
+    id_query = int(request.args.get('imgid'))
+
+    imgperindex = 100
+    neighbor_number = 50
+    start_id    = 0         if id_query - neighbor_number <= 0      else id_query - neighbor_number
+    end_id      = MAX_ID    if id_query + neighbor_number >= MAX_ID else id_query + neighbor_number
+
+    for id in range(start_id, end_id):
+        pagefile.append({'imgpath': DictImagePath[id], 'id': int(id)})
 
     data = {'num_page': int(LenDictPath/imgperindex)+1, 'pagefile': pagefile}
 
@@ -106,7 +126,7 @@ def text_search():
 
     pagefile = []
     text_query = request.args.get('textquery')
-    _, list_ids, _, list_image_paths = MyFaiss.text_search(text_query, k=200)
+    _, list_ids, _, list_image_paths = MyFaiss.text_search(text_query, k=1000)
 
     imgperindex = 100
 
