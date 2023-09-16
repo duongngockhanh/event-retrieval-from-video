@@ -89,7 +89,7 @@ def image_search():
     print("image search")
     pagefile = []
     id_query = int(request.args.get('imgid'))
-    _, list_ids, _, list_image_paths = MyFaiss.image_search(id_query, k=1000)
+    _, list_ids, _, list_image_paths = MyFaiss.image_search(id_query, k=200)
 
     imgperindex = 100
 
@@ -126,7 +126,7 @@ def text_search():
 
     pagefile = []
     text_query = request.args.get('textquery')
-    _, list_ids, _, list_image_paths = MyFaiss.text_search(text_query, k=1000)
+    _, list_ids, _, list_image_paths = MyFaiss.text_search(text_query, k=200)
 
     imgperindex = 100
 
