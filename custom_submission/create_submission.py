@@ -6,4 +6,4 @@ os.makedirs(submission_folder)
 n = 30
 
 for i in range(1, n+1):
-    os.system(f"touch {submission_folder}/query-{i}.csv")
+    os.system(f"touch {submission_folder}/query-p1-{i}.csv")
