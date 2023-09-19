@@ -16,6 +16,8 @@ for second_path in second_path_list:
         vectors.append(np.load(third_path).reshape(-1, 512))
 vectors = np.concatenate(vectors, axis=0).astype(np.float32)
 
+print(vectors.shape) # (607407, 512)
+
 # Normalize vectors (optional, but can improve search quality)
 faiss.normalize_L2(vectors)
 

@@ -22,6 +22,7 @@ app = Flask(__name__, template_folder='templates')
 ####### CONFIG #########
 json_path = 'full_path.json'
 bin_file = 'full_faiss.bin'
+bin_file_v2 = 'full_faiss_v2.bin'
 
 with open(json_path) as json_file:
     json_dict = json.load(json_file)
@@ -32,7 +33,9 @@ for key, value in json_dict.items():
 MAX_ID = len(DictImagePath) # 607407
 
 LenDictPath = len(DictImagePath)
-MyFaiss = Myfaiss(bin_file, DictImagePath, 'cpu', Translation(), "ViT-B/32")
+
+MyFaiss_v1 = Myfaiss(bin_file, DictImagePath, 'cpu', Translation(), "ViT-B/32", clip_version="v1")
+MyFaiss_v2 = Myfaiss(bin_file_v2, DictImagePath, 'cpu', Translation(), "ViT-B/32", clip_version="v2")
 
 dataframe_path = "dataframe_Lxx.csv"
 pldf = pl.read_csv(dataframe_path)
@@ -89,7 +92,14 @@ def image_search():
     print("image search")
     pagefile = []
     id_query = int(request.args.get('imgid'))
-    _, list_ids, _, list_image_paths = MyFaiss.image_search(id_query, k=200)
+    clip_version = request.args.get('clipversion')
+
+    print("clip_version:", clip_version)
+
+    if clip_version == "v1":
+        _, list_ids, _, list_image_paths = MyFaiss_v1.image_search(id_query, k=200)
+    else:
+        _, list_ids, _, list_image_paths = MyFaiss_v1.image_search(id_query, k=200)
 
     imgperindex = 100
 
@@ -126,7 +136,14 @@ def text_search():
 
     pagefile = []
     text_query = request.args.get('textquery')
-    _, list_ids, _, list_image_paths = MyFaiss.text_search(text_query, k=400)
+    clip_version = request.args.get('clipversion')
+
+    print("clip_version:", clip_version)
+
+    if clip_version == "v1":
+        _, list_ids, _, list_image_paths = MyFaiss_v1.text_search(text_query, k=1000)
+    else:
+        _, list_ids, _, list_image_paths = MyFaiss_v2.text_search(text_query, k=1000)
 
     imgperindex = 100
 

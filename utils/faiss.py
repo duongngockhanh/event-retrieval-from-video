@@ -4,16 +4,20 @@ import matplotlib.pyplot as plt
 import math
 import numpy as np
 import clip
+import open_clip
 from langdetect import detect
 
 
 class Myfaiss:
-    def __init__(self, bin_file: str, id2img_fps, device, translater, clip_backbone="ViT-B/32"):
+    def __init__(self, bin_file: str, id2img_fps, device, translater, clip_backbone="ViT-B/32", clip_version="v1"):
         self.index = self.load_bin_file(bin_file)
         self.id2img_fps = id2img_fps
         self.device = device
-        self.model, _ = clip.load(clip_backbone, device=device)
         self.translater = translater
+        if clip_version == "v1":
+            self.model, _ = clip.load(clip_backbone, device=device)
+        else:
+            self.model, _, _ = open_clip.create_model_and_transforms('ViT-B-32', pretrained='laion2b_s34b_b79k')
 
     def load_bin_file(self, bin_file: str):
         return faiss.read_index(bin_file)
