@@ -108,13 +108,29 @@
       transform: translateY(-50%);
     }
 
+    /* k_selection */
+    .k_selection {
+      width: 100%;
+      height: 100%;
+      padding: 20px;
+    }
+
+    .k_selection input {
+      width: 60%;
+      height: 50px;
+      border: none;
+      border-radius: 10px;
+      padding-left: 5%;
+      font-size: 20px;
+    }
+
     /* search */
 
     .search_container {
       width: 100%;
       height: 100px;
       display: grid;
-      grid-template-columns: auto 200px 439px;
+      grid-template-columns: auto 200px 120px 439px;
       border-bottom: 5px solid #4dccc6;
     }
 
@@ -433,6 +449,9 @@
             <label class="custom-radio"><input type="radio" name="clip_version" value="v2"> CLIPv2</label>
           </form>
         </div>
+        <div class="k_selection">
+          <input type="text" id="k_selection" name="k_selection" value="400">
+        </div>
         <div class="group_btn">
           <button class="custom-btn btn-13" onclick="search();"><span>Search</span></button>
         </div>
@@ -543,7 +562,9 @@
         }
       }
 
-      window.open("/imgsearch?imgid=" + id + "&clipversion=" + clip_version);
+      var k_selection = document.getElementById("k_selection").value; // Lấy k
+
+      window.open("/imgsearch?clipversion=" + clip_version + "&kselection=" + k_selection + "&imgid=" + id);
     }
 
     function on_load() {
@@ -573,9 +594,11 @@
         }
       }
 
+      var k_selection = document.getElementById("k_selection").value; // Lấy k
+
       text_query = document.getElementById('text_query').value;
 
-      window.location.href = "/textsearch?textquery=" + text_query + "&clipversion=" + clip_version;
+      window.location.href = "/textsearch?clipversion=" + clip_version + "&kselection=" + k_selection + "&textquery=" + text_query;
 
       document.getElementById('text_query').innerHTML = text_query;
     }

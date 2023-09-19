@@ -93,13 +93,13 @@ def image_search():
     pagefile = []
     id_query = int(request.args.get('imgid'))
     clip_version = request.args.get('clipversion')
-
+    k_selection = int(request.args.get('kselection'))
     print("clip_version:", clip_version)
-
+    print("k_selection", k_selection)
     if clip_version == "v1":
-        _, list_ids, _, list_image_paths = MyFaiss_v1.image_search(id_query, k=200)
+        _, list_ids, _, list_image_paths = MyFaiss_v1.image_search(id_query, k=k_selection)
     else:
-        _, list_ids, _, list_image_paths = MyFaiss_v1.image_search(id_query, k=200)
+        _, list_ids, _, list_image_paths = MyFaiss_v1.image_search(id_query, k=k_selection)
 
     imgperindex = 100
 
@@ -137,13 +137,14 @@ def text_search():
     pagefile = []
     text_query = request.args.get('textquery')
     clip_version = request.args.get('clipversion')
-
+    k_selection = int(request.args.get('kselection'))
     print("clip_version:", clip_version)
+    print("k_selection", k_selection)
 
     if clip_version == "v1":
-        _, list_ids, _, list_image_paths = MyFaiss_v1.text_search(text_query, k=1000)
+        _, list_ids, _, list_image_paths = MyFaiss_v1.text_search(text_query, k=k_selection)
     else:
-        _, list_ids, _, list_image_paths = MyFaiss_v2.text_search(text_query, k=1000)
+        _, list_ids, _, list_image_paths = MyFaiss_v2.text_search(text_query, k=k_selection)
 
     imgperindex = 100
 
