@@ -1,11 +1,12 @@
 import numpy as np
 import faiss
 import glob
+import torch
 
 vectors = []
 
-first_path = "clip_features_Lxx"
-saved_file = "full_faiss.bin"
+first_path = "clip_features_Lxx_v2"
+saved_file = "full_faiss_v2.bin"
 
 second_path_list = sorted(glob.glob(f"{first_path}/*"))
 

@@ -1,11 +1,14 @@
 utils/__pycache__/*
 
 compressed_Lxx
-clip_features_Lxx
-detection_Lxx
-
 full_path.json
+
+clip_features_Lxx
 full_faiss.bin
+clip_features_Lxx_v2
+full_faiss_v2.bin
+
+detection_Lxx
 dataframe_Lxx.csv
 
 submission

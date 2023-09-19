@@ -29,7 +29,7 @@ with open(json_path) as json_file:
 DictImagePath = {}
 for key, value in json_dict.items():
     DictImagePath[int(key)] = value
-MAX_ID = len(DictImagePath)
+MAX_ID = len(DictImagePath) # 607407
 
 LenDictPath = len(DictImagePath)
 MyFaiss = Myfaiss(bin_file, DictImagePath, 'cpu', Translation(), "ViT-B/32")
@@ -221,6 +221,7 @@ def rerank(clip_filter, detection_query):
 
     filter_np = gen_np_from_df(filter_pl).tolist()
     return filter_np
+
 
 if __name__ == '__main__':
     app.run(debug=True, host="0.0.0.0", port=5001)
