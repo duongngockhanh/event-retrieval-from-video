@@ -16,6 +16,10 @@
 
 6. Hướng dẫn cách nộp bài **vòng sơ tuyển**: [docs](https://docs.google.com/document/d/1FObOn5vBzJMEy-uJ6GCCGsu32xXv8fsVNyKZs27Xp6k/edit)
 
+# Điểm sơ tuyển
+![preliminary_score](https://github.com/duongngockhanh/hcmai-2023/assets/87640587/a679cf3d-5572-4cd3-90f5-9e1313a76336)
+
+
 # Thông tin vòng chung kết
 
 7. **Sep 27** - Một vài thông tin quan trọng: [docs](https://docs.google.com/document/d/1lrS5n1pF-DzhrDV8L68HVxvgqc-c7mNJM-eC-vzHsBY/edit)
