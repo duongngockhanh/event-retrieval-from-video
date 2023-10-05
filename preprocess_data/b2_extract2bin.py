@@ -26,12 +26,12 @@ def process_and_save(first_path, saved_files):
 
     v3_idx = np.array([i for i in range(vectors.shape[0]) if i % 3 != 1])
     vectors_v3 = vectors[v3_idx]
-    save_bin(vectors, saved_files[1])
+    save_bin(vectors_v3, saved_files[1])
     print(vectors_v3.shape)
 
     v5_idx = np.array([i for i in range(vectors.shape[0]) if i % 3 == 1])
     vectors_v5 = vectors[v5_idx]
-    save_bin(vectors, saved_files[2])
+    save_bin(vectors_v5, saved_files[2])
     print(vectors_v5.shape)
 
     print()

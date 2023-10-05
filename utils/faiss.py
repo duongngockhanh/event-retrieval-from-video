@@ -14,7 +14,7 @@ class Myfaiss:
         self.id2img_fps = id2img_fps
         self.device = device
         self.translater = translater
-        if clip_version == "v1":
+        if clip_version in ["v1", "v3", "v5"]:
             self.model, _ = clip.load(clip_backbone, device=device)
         else:
             self.model, _, _ = open_clip.create_model_and_transforms('ViT-B-32', pretrained='laion2b_s34b_b79k')

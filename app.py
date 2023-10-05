@@ -20,22 +20,47 @@ os.environ['CUDA_VISIBLE_DEVICES'] = '-1'
 app = Flask(__name__, template_folder='templates')
 
 ####### CONFIG #########
+### begin: create image path
+def create_dict_image_path(json_path):
+    with open(json_path) as json_file:
+        json_dict = json.load(json_file)
+
+    DictImagePath = {}
+    for key, value in json_dict.items():
+        DictImagePath[int(key)] = value
+    
+    return DictImagePath
+
 json_path = 'keydata/full_path_v1.json'
-bin_file = 'keydata/full_faiss_v1.bin'
-bin_file_v2 = 'keydata/full_faiss_v2.bin'
+json_path_v3 = 'keydata/full_path_v3.json'
+json_path_v5 = 'keydata/full_path_v5.json'
 
-with open(json_path) as json_file:
-    json_dict = json.load(json_file)
+DictImagePath = create_dict_image_path(json_path)
+DictImagePath_v3 = create_dict_image_path(json_path_v3)
+DictImagePath_v5 = create_dict_image_path(json_path_v5)
+### end
 
-DictImagePath = {}
-for key, value in json_dict.items():
-    DictImagePath[int(key)] = value
-MAX_ID = len(DictImagePath) # 607407
 
+MAX_ID = len(DictImagePath) # 607407 MAX_ID của json v1
 LenDictPath = len(DictImagePath)
 
-MyFaiss_v1 = Myfaiss(bin_file, DictImagePath, 'cpu', Translation(), "ViT-B/32", clip_version="v1")
+
+### begin: create MyFaiss objects
+bin_file_v1 = 'keydata/full_faiss_v1.bin'
+bin_file_v2 = 'keydata/full_faiss_v2.bin'
+bin_file_v3 = 'keydata/full_faiss_v3.bin'
+bin_file_v4 = 'keydata/full_faiss_v4.bin'
+bin_file_v5 = 'keydata/full_faiss_v5.bin'
+bin_file_v6 = 'keydata/full_faiss_v6.bin'
+
+MyFaiss_v1 = Myfaiss(bin_file_v1, DictImagePath, 'cpu', Translation(), "ViT-B/32", clip_version="v1")
 MyFaiss_v2 = Myfaiss(bin_file_v2, DictImagePath, 'cpu', Translation(), "ViT-B/32", clip_version="v2")
+MyFaiss_v3 = Myfaiss(bin_file_v3, DictImagePath_v3, 'cpu', Translation(), "ViT-B/32", clip_version="v3")
+MyFaiss_v4 = Myfaiss(bin_file_v4, DictImagePath_v3, 'cpu', Translation(), "ViT-B/32", clip_version="v4")
+MyFaiss_v5 = Myfaiss(bin_file_v5, DictImagePath_v5, 'cpu', Translation(), "ViT-B/32", clip_version="v5")
+MyFaiss_v6 = Myfaiss(bin_file_v6, DictImagePath_v5, 'cpu', Translation(), "ViT-B/32", clip_version="v6")
+### end
+
 
 dataframe_path = "dataframe_Lxx.csv"
 pldf = pl.read_csv(dataframe_path)
@@ -87,30 +112,6 @@ def thumbnailimg():
     return render_template('home.html', data=data)
 
 
-@app.route('/imgsearch')
-def image_search():
-    print("image search")
-    pagefile = []
-    id_query = int(request.args.get('imgid'))
-    clip_version = request.args.get('clipversion')
-    k_selection = int(request.args.get('kselection'))
-    print("clip_version:", clip_version)
-    print("k_selection", k_selection)
-    if clip_version == "v1":
-        _, list_ids, _, list_image_paths = MyFaiss_v1.image_search(id_query, k=k_selection)
-    else:
-        _, list_ids, _, list_image_paths = MyFaiss_v1.image_search(id_query, k=k_selection)
-
-    imgperindex = 100
-
-    for imgpath, id in zip(list_image_paths, list_ids):
-        pagefile.append({'imgpath': imgpath, 'id': int(id)})
-
-    data = {'num_page': int(LenDictPath/imgperindex)+1, 'pagefile': pagefile}
-
-    return render_template('home.html', data=data)
-
-
 @app.route('/showsegment')
 def showsegment():
     print("show segment")
@@ -130,6 +131,45 @@ def showsegment():
     return render_template('home.html', data=data)
 
 
+@app.route('/imgsearch')
+def image_search():
+    print("image search")
+    pagefile = []
+    id_query = int(request.args.get('imgid'))
+    clip_version = request.args.get('clipversion')
+    k_selection = int(request.args.get('kselection'))
+    print("clip_version:", clip_version)
+    print("k_selection", k_selection)
+
+
+    ### begin
+    if clip_version == "v1":
+        _, list_ids, _, list_image_paths = MyFaiss_v1.image_search(id_query, k=k_selection)
+    elif clip_version == "v2":
+        _, list_ids, _, list_image_paths = MyFaiss_v2.image_search(id_query, k=k_selection)
+    elif clip_version == "v3":
+        _, list_ids, _, list_image_paths = MyFaiss_v3.image_search(id_query, k=k_selection)
+    elif clip_version == "v4":
+        _, list_ids, _, list_image_paths = MyFaiss_v4.image_search(id_query, k=k_selection)
+    elif clip_version == "v5":
+        _, list_ids, _, list_image_paths = MyFaiss_v5.image_search(id_query, k=k_selection)
+    elif clip_version == "v6":
+        _, list_ids, _, list_image_paths = MyFaiss_v6.image_search(id_query, k=k_selection)
+    else:
+        raise ValueError("Invalid clip_version")
+    ### end
+
+
+    imgperindex = 100
+
+    for imgpath, id in zip(list_image_paths, list_ids):
+        pagefile.append({'imgpath': imgpath, 'id': int(id)})
+
+    data = {'num_page': int(LenDictPath/imgperindex)+1, 'pagefile': pagefile}
+
+    return render_template('home.html', data=data)
+
+
 @app.route('/textsearch')
 def text_search():
     print("text search")
@@ -141,10 +181,24 @@ def text_search():
     print("clip_version:", clip_version)
     print("k_selection", k_selection)
 
+
+    ### begin
     if clip_version == "v1":
         _, list_ids, _, list_image_paths = MyFaiss_v1.text_search(text_query, k=k_selection)
-    else:
+    elif clip_version == "v2":
         _, list_ids, _, list_image_paths = MyFaiss_v2.text_search(text_query, k=k_selection)
+    elif clip_version == "v3":
+        _, list_ids, _, list_image_paths = MyFaiss_v3.text_search(text_query, k=k_selection)
+    elif clip_version == "v4":
+        _, list_ids, _, list_image_paths = MyFaiss_v4.text_search(text_query, k=k_selection)
+    elif clip_version == "v5":
+        _, list_ids, _, list_image_paths = MyFaiss_v5.text_search(text_query, k=k_selection)
+    elif clip_version == "v6":
+        _, list_ids, _, list_image_paths = MyFaiss_v6.text_search(text_query, k=k_selection)
+    else:
+        raise ValueError("Invalid clip_version")
+    ### end
+
 
     imgperindex = 100
 
