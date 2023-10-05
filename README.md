@@ -1,4 +1,4 @@
-<h1>Pipeline HCM AI CHALLENGE 2023 <br> Event Retrieval from Visual Data</h1>
+<h1>Science AIO - HCM AI Challenge 2023 <br> Event Retrieval from Visual Data</h1>
 
 ## Setup 
 ```
