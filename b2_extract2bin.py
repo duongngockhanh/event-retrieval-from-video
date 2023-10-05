@@ -22,7 +22,7 @@ def process_and_save(first_path, saved_files):
             vectors.append(np.load(third_path).reshape(-1, 512))
     vectors = np.concatenate(vectors, axis=0).astype(np.float32)
     save_bin(vectors, saved_files[0])
-    print(vectors.shape) # (607407, 512)
+    print(vectors.shape) # (1038141, 512)
 
     v3_idx = np.array([i for i in range(vectors.shape[0]) if i % 3 != 1])
     vectors_v3 = vectors[v3_idx]

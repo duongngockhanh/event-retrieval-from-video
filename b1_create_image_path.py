@@ -17,6 +17,7 @@ if __name__ == "__main__":
             forth_path_list = sorted(glob.glob(f"{third_path}/*"))
             all_path_list += forth_path_list
 
+    print(len(all_path_list)) # 1038141
     idx_list = list(range(len(all_path_list)))
     path_dict = dict(zip(idx_list, all_path_list))
     write_json(path_dict, json_file_paths[0])
