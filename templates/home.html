@@ -333,6 +333,42 @@
       background-color: #145552;
     }
 
+    .container_img_btn .btn_knn_od {
+      display: none;
+      position: absolute;
+      top: 50%;
+      left: 10%;
+      background-color: #4dccc6;
+      color: white;
+      font-size: 16px;
+      padding: 5px 12px;
+      cursor: pointer;
+      border-radius: 5px;
+      text-align: center;
+    }
+
+    .container_img_btn .btn_select_od {
+      display: none;
+      position: absolute;
+      top: 50%;
+      right: 10%;
+      background-color: #4dccc6;
+      color: white;
+      font-size: 16px;
+      padding: 5px 12px;
+      cursor: pointer;
+      border-radius: 5px;
+      text-align: center;
+    }
+
+    .container_img_btn .btn_knn_od:hover {
+      background-color: #145552;
+    }
+
+    .container_img_btn .btn_select_od:hover {
+      background-color: #145552;
+    }
+
     .container_img_btn img:hover {
       border: 4px solid #4dccc6;
     }
@@ -480,6 +516,8 @@
     data = JSON.parse(data);
     let btn_knn = document.getElementsByClassName("btn_knn");
     let btn_select = document.getElementsByClassName("btn_select");
+    let btn_knn_od = document.getElementsByClassName("btn_knn_od");
+    let btn_select_od = document.getElementsByClassName("btn_select_od");
     let hoverImg = document.getElementsByClassName("hoverImg");
     // console.log("data: " + JSON.stringify(data))
     function add_paging() {
@@ -549,6 +587,16 @@
       // console.log('type: ' + typeof(btn_knn))
       btn_knn[id].style.display = "none";
       btn_select[id].style.display = "none";
+    }
+    function mouseOver_od(id) {
+      // console.log('type: ' + typeof(btn_knn))
+      btn_knn_od[id].style.display = "block";
+      btn_select_od[id].style.display = "block";
+    }
+    function mouseOut_od(id) {
+      // console.log('type: ' + typeof(btn_knn))
+      btn_knn_od[id].style.display = "none";
+      btn_select_od[id].style.display = "none";
     }
     function go_img_search(id) {
       // Lấy tất cả các radio buttons có tên "clip_version"
@@ -711,9 +759,9 @@
           pagefile_list.forEach((item, index) => {
             // console.log('item: ' + JSON.stringify(item))
             $("#extra_od").append(
-              `<div class= "container_img_btn"  onmouseover="mouseOver(${index})" onmouseout="mouseOut(${index})">
-                        <button class="btn_knn" onClick="go_img_search(${item.id})">IR</button>
-                        <button class="btn_select" onClick="go_submission(${item.id})">SUB</button>
+              `<div class= "container_img_btn"  onmouseover="mouseOver_od(${index})" onmouseout="mouseOut_od(${index})">
+                        <button class="btn_knn_od" onClick="go_img_search(${item.id})">IR</button>
+                        <button class="btn_select_od" onClick="go_submission(${item.id})">SUB</button>
                         <img class="hoverImg" onclick="show_list_segment(${item.id})" src="get_img?fpath=${item.imgpath}"">
                     </div>`
             )

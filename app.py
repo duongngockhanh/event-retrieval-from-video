@@ -148,9 +148,9 @@ def submission():
         }
         response_submit = requests.get(f"{API_BASE_URL}/submit", params=params)
         if response_submit.status_code == 200:
-            result = "Science AIO answer is " + str(response_submit.json()["submission"])
+            result = f"{res_item} - {res_frame} - {str(response_submit.json()['submission'])}"
         else:
-            result = "Duplicated answer"
+            result = f"{res_item} - {res_frame} - Duplicated answer"
     else:
         result = "Login failed: " + str(session_id)
     
