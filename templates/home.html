@@ -489,7 +489,7 @@
           <input type="text" id="k_selection" name="k_selection" value="400">
         </div>
         <div class="group_btn">
-          <button class="custom-btn btn-13" onclick="search();"><span>Search</span></button>
+          <button id="searchButton" class="custom-btn btn-13" onclick="search();"><span>Search</span></button>
         </div>
 
       </div>
@@ -669,7 +669,15 @@
       document.getElementById('text_query').innerHTML = text_query;
     }
 
-
+    $(document).ready(function () {
+      // Bắt sự kiện khi phím Enter được nhấn
+      $('#text_query').keypress(function (e) {
+        if (e.which == 13) { // 13 tương ứng với phím "Enter"
+          e.preventDefault(); // Ngăn chặn hành động mặc định của phím "Enter"
+          $('#searchButton').click(); // Gọi sự kiện click của nút button "Search"
+        }
+      });
+    });
 
     // ---------------------------------- Object Detection Section ----------------------------------
     var fruits = [
