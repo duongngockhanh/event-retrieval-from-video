@@ -9,6 +9,7 @@ from flask import Flask, render_template, Response, request, send_file, jsonify
 import cv2
 import os
 import polars as pl
+import requests
 from functools import reduce
 os.environ['CUDA_VISIBLE_DEVICES'] = '-1'
 
@@ -18,6 +19,28 @@ os.environ['CUDA_VISIBLE_DEVICES'] = '-1'
 # app = Flask(__name__, template_folder='templates', static_folder='static')
 
 app = Flask(__name__, template_folder='templates')
+
+
+# Read account information
+with open("account.txt") as f:
+    accinfo = [item.strip() for item in f.readlines()]
+    acc_username = accinfo[0]
+    acc_password = accinfo[1]
+
+
+# Define the API base URL
+API_BASE_URL = "https://eventretrieval.one/api/v1"
+login_data = {
+    "username": acc_username,
+    "password": acc_password
+}
+response = requests.post(f"{API_BASE_URL}/login", json=login_data)
+
+session_id = None
+if response.status_code == 200:
+    print("##### Login successfully #####")
+    session_id = response.json()['sessionId']
+
 
 ####### CONFIG #########
 json_path = 'keydata/full_path_v1.json'
@@ -87,6 +110,57 @@ def thumbnailimg():
     return render_template('home.html', data=data)
 
 
+@app.route('/showsegment')
+def showsegment():
+    print("show segment")
+    pagefile = []
+    id_query = int(request.args.get('imgid'))
+
+    imgperindex = 100
+    neighbor_number = 50
+    start_id    = 0         if id_query - neighbor_number <= 0      else id_query - neighbor_number
+    end_id      = MAX_ID    if id_query + neighbor_number >= MAX_ID else id_query + neighbor_number
+
+    for id in range(start_id, end_id):
+        pagefile.append({'imgpath': DictImagePath[id], 'id': int(id)})
+
+    data = {'num_page': int(LenDictPath/imgperindex)+1, 'pagefile': pagefile}
+
+    return render_template('home.html', data=data)
+
+
+@app.route("/submission", methods=['POST'])
+def submission():
+    submission_data = request.json
+    id_query = int(submission_data['id'])
+    imgpath = DictImagePath[id_query]
+    imgpath_list = imgpath.split('/')
+    res_frame = int(imgpath_list[-1][5:-5])
+    res_item = imgpath_list[-2]
+
+    result = None
+
+    if response.status_code == 200:
+        params = {
+            "session": session_id,
+            "frame": res_frame,
+            "item": res_item
+        }
+        response_submit = requests.get(f"{API_BASE_URL}/submit", params=params)
+        if response_submit.status_code == 200:
+            result = "Science AIO answer is " + str(response_submit.json()["submission"])
+        else:
+            result = "Duplicated answer"
+    else:
+        result = "Login failed: " + str(session_id)
+    
+    data = {
+        'result': str(result)
+    }
+
+    return jsonify(data)
+
+
 @app.route('/imgsearch')
 def image_search():
     print("image search")
@@ -105,25 +179,6 @@ def image_search():
 
     for imgpath, id in zip(list_image_paths, list_ids):
         pagefile.append({'imgpath': imgpath, 'id': int(id)})
-
-    data = {'num_page': int(LenDictPath/imgperindex)+1, 'pagefile': pagefile}
-
-    return render_template('home.html', data=data)
-
-
-@app.route('/showsegment')
-def showsegment():
-    print("show segment")
-    pagefile = []
-    id_query = int(request.args.get('imgid'))
-
-    imgperindex = 100
-    neighbor_number = 50
-    start_id    = 0         if id_query - neighbor_number <= 0      else id_query - neighbor_number
-    end_id      = MAX_ID    if id_query + neighbor_number >= MAX_ID else id_query + neighbor_number
-
-    for id in range(start_id, end_id):
-        pagefile.append({'imgpath': DictImagePath[id], 'id': int(id)})
 
     data = {'num_page': int(LenDictPath/imgperindex)+1, 'pagefile': pagefile}
 
