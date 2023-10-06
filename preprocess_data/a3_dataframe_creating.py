@@ -2,7 +2,7 @@ import os
 import polars as pl
 from tqdm import tqdm
 
-class_path = "coco_classes.txt"
+class_path = "a7_coco_classes.txt"
 class_list = []
 with open(class_path) as f:
     for i in f:
