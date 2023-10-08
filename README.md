@@ -1,29 +1,15 @@
-<h1>Science AIO - HCM AI Challenge 2023 <br> Event Retrieval from Visual Data</h1>
+## HCMAIC 2023
+1. Competition Theme: **Image Retrieval from Video**
+2. Team name: **Science AIO**
+3. Role: **Leader**
 
-## Setup 
-```
-pip install git+https://github.com/openai/CLIP.git
-pip install -r requirements.txt
-```
+## Ranking
+Ranked **10th** out of **610** teams in a competition, placing in the top **1.64%** during the preliminary round.
 
+<img width="1000" alt="preliminary_ranking" src="https://github.com/duongngockhanh/hcmai-2023/assets/87640587/22d30509-4cf1-48d2-9f58-da4eb92b356e">
 
+## Documents
+Please see some of the things I used for my system at [DOC.md](https://github.com/duongngockhanh/hcmai-2023/blob/main/DOC.md)
 
-## Dependencies
-
-You just need to download everything in this [link](https://drive.google.com/drive/folders/1ffZ4sdvmlb0zc2wLnIUkhNyVfRyj3RiF?usp=sharing) and put them in the hcmai-2023 folder.
-
-
-
-## Run 
-```
-python app.py
-```
-
-URL: http://0.0.0.0:5001/home?index=0
-
-If an error occurs, try the following URL: https://127.0.0.1:5001/home?index=0
-
-
-
-## Demo
-![demo](https://github.com/duongngockhanh/hcmai-2023/assets/87640587/f940a1cd-8c9e-4716-bb7d-a3a9b6ae8b5e)
+## Installation
+Please see system installation instructions at [INSTALL.md](https://github.com/duongngockhanh/hcmai-2023/blob/main/INSTALL.md)

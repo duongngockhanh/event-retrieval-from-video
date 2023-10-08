@@ -36,16 +36,15 @@ login_data = {
 }
 response = requests.post(f"{API_BASE_URL}/login", json=login_data)
 
-session_id = None
 if response.status_code == 200:
-    print("##### Login successfully #####")
     session_id = response.json()['sessionId']
+    print("##### Login successfully #####", str(session_id))
 
 
 ####### CONFIG #########
-json_path = 'keydata/full_path_v1.json'
-bin_file = 'keydata/full_faiss_v1.bin'
-bin_file_v2 = 'keydata/full_faiss_v2.bin'
+json_path = 'keydata/full_path_v3.json'
+bin_file = 'keydata/full_faiss_v3.bin'
+bin_file_v2 = 'keydata/full_faiss_v4.bin'
 
 with open(json_path) as json_file:
     json_dict = json.load(json_file)

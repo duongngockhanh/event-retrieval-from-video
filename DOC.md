@@ -2,12 +2,9 @@
 - Faiss
 - CLIP and Prompt Engineering for CLIP
 - TransNet
-- Place Recognition
-- OCR
-- Color Detection
 
 ## Faiss
-1. Faiss: Facebook AI Research Search Similarity ([Docs](https://faiss.ai/index.html))
+1. **Faiss**: Facebook AI Research Search Similarity ([Docs](https://faiss.ai/index.html))
 
 ## CLIP and Prompt Engineering for CLIP
 
@@ -20,11 +17,7 @@
 2. Towards Robust Prompts on Vision-Language Models - 2023 ([Paper](https://arxiv.org/pdf/2304.08479.pdf))
 
 ### Blogs
-1. Prompt Engineering: The Magic Words to using OpenAI's CLIP - 2021 ([Blog](https://blog.roboflow.com/openai-clip-prompt-engineering))
+**Prompt Engineering**: The Magic Words to using OpenAI's CLIP - 2021 ([Blog](https://blog.roboflow.com/openai-clip-prompt-engineering))
    
 ## TransNet
-1. TransNet: A Deep Network for Fast Detection of Common Shot Transitions ([GitHub](https://github.com/soCzech/TransNet))
-2. TransNet V2: Shot Boundary Detection Neural Network ([GitHub](https://github.com/soCzech/TransNetV2/tree/master))
-
-## Place Recognition
-1. CosPlace: Rethinking Visual Geo-localization for Large-Scale Applications ([GitHub](https://github.com/gmberton/cosplace))
+**TransNet V2**: Shot Boundary Detection Neural Network ([GitHub](https://github.com/soCzech/TransNetV2/tree/master))
