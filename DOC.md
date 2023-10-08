@@ -1,10 +1,11 @@
-# Documents for Ho Chi Minh AI Challenge
+# Documents
 - Faiss
 - CLIP and Prompt Engineering for CLIP
 - TransNet
 
+
 ## Faiss
-1. **Faiss**: Facebook AI Research Search Similarity ([Docs](https://faiss.ai/index.html))
+1. Faiss: Facebook AI Research Search Similarity ([Docs](https://faiss.ai/index.html))
 
 ## CLIP and Prompt Engineering for CLIP
 
@@ -17,7 +18,8 @@
 2. Towards Robust Prompts on Vision-Language Models - 2023 ([Paper](https://arxiv.org/pdf/2304.08479.pdf))
 
 ### Blogs
-**Prompt Engineering**: The Magic Words to using OpenAI's CLIP - 2021 ([Blog](https://blog.roboflow.com/openai-clip-prompt-engineering))
+1. Prompt Engineering: The Magic Words to using OpenAI's CLIP - 2021 ([Blog](https://blog.roboflow.com/openai-clip-prompt-engineering))
    
 ## TransNet
-**TransNet V2**: Shot Boundary Detection Neural Network ([GitHub](https://github.com/soCzech/TransNetV2/tree/master))
+1. TransNet: A Deep Network for Fast Detection of Common Shot Transitions ([GitHub](https://github.com/soCzech/TransNet))
+2. TransNet V2: Shot Boundary Detection Neural Network ([GitHub](https://github.com/soCzech/TransNetV2/tree/master))
