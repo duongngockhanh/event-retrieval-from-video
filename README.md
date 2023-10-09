@@ -1,7 +1,7 @@
 ## HCMAIC 2023
 1. Competition Theme: **Image Retrieval from Video**
 2. Team name: **Science AIO**
-3. Role: **Leader**
+3. Role: **Leader** - Researcher - Developer
 
 ## Ranking
 Ranked **10th** out of **610** teams in a competition, placing in the top **1.64%** during the preliminary round.
