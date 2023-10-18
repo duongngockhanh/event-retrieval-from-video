@@ -1,5 +1,5 @@
 ## HCMAIC 2023
-1. Competition Theme: **Image Retrieval from Video**
+1. Competition Theme: **Event Retrieval from Video**
 2. Team name: **Science AIO**
 3. Role: **Leader** - Researcher - Developer
 
